@@ -1,3 +1,13 @@
+let humanScore = 0;
+let computerScore = 0;
+
+
+const userSelection = document.querySelector("#buttons");
+const results = document.querySelector("#results");
+const humanScoreP = document.querySelector("#humanScore");
+const computerScoreP = document.querySelector("#computerScore");
+const computerMove = document.querySelector("#computerMove");
+const finalResult = document.querySelector("finalResult");
 
 
 function getComputerChoice() {
@@ -9,69 +19,63 @@ function getComputerChoice() {
     } else {
         return "scissors"
     }
-
 }
 
-
-// function getHumanChoice() {
-//     userInput = prompt("Enter Rock, Paper, or Scissors").toLowerCase();
-//     return userInput.charAt(0).toUpperCase() + userInput.substring(1);
-// }
-
-
-function getHumanChoice(event) {
-    return event.target.id;
-}
-
-
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-        console.log("It's a tie!")
-    }
-    if (humanChoice === "rock") {
-        if (computerChoice === "scissors") {
-            console.log("You win! Rock beats Scissors")
-            humanScore++
-        }
-        if (computerChoice === "paper") {
-            console.log("You lose! Paper beats Rock!")
-            computerScore++
-        }
-    } else if (humanChoice === "scissors") {
-        if (computerChoice === "rock") {
-            console.log("You lose! Rock beats Scissors")
-            computerScore++
-        }
-        if (computerChoice === "paper") {
-            console.log("You win! Scissors beats Paper!")
-            humanScore++
-        }
-    } else if (humanChoice === "paper") {
-        if (computerChoice === "rock") {
-            console.log("You win! Paper beats Rock")
-            humanScore++
-        }
-        if (computerChoice === "scissors") {
-            console.log("You lose! Scissors beats Paper!")
-            computerScore++
-        }}}
-
-        const humanSelection = getHumanChoice();
-        console.log(`human selection is ${humanSelection}`)
-        const computerSelection = getComputerChoice();
-        console.log(`computer selection is ${computerSelection}`)
-        playRound(humanSelection, computerSelection);
-        console.log(`human score is ${humanScore}`);
-        console.log(`computer score is ${computerScore}`);
     
+function playRound(humanChoice, computerChoice) {
+if (humanChoice === computerChoice) {
+    computerMove.innerText = `The computer played ${computerChoice}`;
+    results.innerText = "It's a tie!";
+}
+if (humanChoice === "rock") {
+    if (computerChoice === "scissors") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You win! Rock beats Scissors"
+        humanScore++
     }
+    if (computerChoice === "paper") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You lose! Paper beats Rock!"
+        computerScore++
+    }
+} else if (humanChoice === "scissors") {
+    if (computerChoice === "rock") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You lose! Rock beats Scissors"
+        computerScore++
+    }
+    if (computerChoice === "paper") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You win! Scissors beats Paper!"
+        humanScore++
+    }
+} else if (humanChoice === "paper") {
+    if (computerChoice === "rock") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You win! Paper beats Rock"
+        humanScore++
+    }
+    if (computerChoice === "scissors") {
+        computerMove.innerText = `The computer played ${computerChoice}`;
+        results.innerText = "You lose! Scissors beats Paper!"
+        computerScore++
+    }}}
 
-    const userSelection = document.querySelector("#buttons");
-    userSelection.addEventListener("click", getHumanChoice);
+
+    
+    userSelection.addEventListener("click", (event) => {
+        if (humanScore < 5 && computerScore < 5) {
+            playRound(event.target.id, getComputerChoice());
+            humanScoreP.innerText = `Your score is ${humanScore}`;
+            computerScoreP.innerText = `The  computer's score is ${computerScore}`;
+        } 
+            finalResult.innerText = "Game over!"
+        
+    })
+    
 
     
 
+
+
+    
