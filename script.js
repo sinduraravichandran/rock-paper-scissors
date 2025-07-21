@@ -7,7 +7,7 @@ const results = document.querySelector("#results");
 const humanScoreP = document.querySelector("#humanScore");
 const computerScoreP = document.querySelector("#computerScore");
 const computerMove = document.querySelector("#computerMove");
-const finalResult = document.querySelector("finalResult");
+const finalResult = document.querySelector("#finalResult");
 
 
 function getComputerChoice() {
@@ -69,9 +69,13 @@ if (humanChoice === "rock") {
             humanScoreP.innerText = `Your score is ${humanScore}`;
             computerScoreP.innerText = `The  computer's score is ${computerScore}`;
         } 
-            finalResult.innerText = "Game over!"
-        
-    })
+        if (humanScore === 5) {
+            finalResult.innerText = "Congratulations, you won! Game over!";
+        } else if (computerScore === 5) {
+            finalResult.innerText = "Sorry, you lost. Game over!";
+        }
+
+        })
     
 
     

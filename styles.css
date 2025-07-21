@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 10px;
+}
+
+#resultsDiv {
+    background-color: lightgrey;
+    margin: 10px;
+    width: 50%;
+    height: 140px;
+}
+
+button {
+    background-color: skyblue;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    width: 70px;
+    color: rgb(47, 46, 46);
+}
+
+p {
+    padding: 5px;
+}
+
+#results {
+    font-weight: bold;
+}
+
+#humanScore, #computerScore {
+    color: blue;
+}
